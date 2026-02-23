@@ -1,0 +1,37 @@
+name: DBT + Airflow CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  dbt-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dbt
+        run: |
+          pip install dbt-core dbt-snowflake
+
+      - name: Create profiles.yml
+        run: |
+          mkdir -p ~/.dbt
+          echo "${{ secrets.DBT_PROFILE }}" > ~/.dbt/profiles.yml
+
+      - name: dbt deps
+        run: dbt deps --project-dir my_dbt_project
+
+      - name: dbt compile
+        run: dbt compile --project-dir my_dbt_project
+
+      - name: dbt test
+        run: dbt test --project-dir my_dbt_project
