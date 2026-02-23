@@ -1,0 +1,11 @@
+{
+    "duckdb.databases": [
+        {
+            "alias": "my_duckdb",
+            "type": "file",
+            "path": "/Users/subinssubins/data_engineering/my_dbt_project/my_duckdb.db",
+            "attached": true
+        }
+    ],
+    "duckdb.defaultDatabase": "my_duckdb"
+}

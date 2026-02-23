@@ -1,0 +1,5 @@
+select
+    age,
+    count(*) as total_customers
+from {{ ref('customerpy') }}
+group by age

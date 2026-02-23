@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: postgres_src
+    schema: public
+
+    tables:
+      - name: employees
