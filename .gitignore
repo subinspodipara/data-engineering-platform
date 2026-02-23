@@ -17,3 +17,21 @@ airflow/logs/
 # Secrets
 profiles.yml
 .env
+# Virtual environments
+de_env/
+dbt_env/
+airflow_venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# dbt
+target/
+logs/
+dbt_packages/
+
+# Airflow
+airflow.db
+airflow/logs/
